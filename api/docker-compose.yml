@@ -28,7 +28,7 @@ services:
       args:
         UID: $U_ID
     ports:
-      - 250:80
+      - 8082:80
     volumes:
       - ./public:/appdata/www/public
     depends_on:
@@ -41,7 +41,7 @@ services:
     build:
       context: ./docker/database
     ports:
-      - 36000:3306
+      - 3601:3306
     environment:
       MYSQL_DATABASE: desygner.db
       MYSQL_USER: desygner

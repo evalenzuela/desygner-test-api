@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+
+  desygner-api-php:
+    container_name: desygner-api-php
+    build:
+      context: docker/php
+      args:
+        UID: $U_ID
+    environment:
+      PHP_IDE_CONFIG: serverName=Docker
+      XDEBUG_CLIENT_HOST: host.docker.internal
+      XDEBUG_CLIENT_PORT: 9003
+    volumes:
+      - ./:/appdata/www
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ~/.ssh/id_rsa:/home/appuser/.ssh/id_rsa
+    depends_on:
+      - desygner-api-db
+    networks:
+      - desygner-api-network
+
+networks:
+  symfony-api-network:
+    external: true

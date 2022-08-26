@@ -57,5 +57,5 @@ volumes:
   desygner-api-db-data:
 
 networks:
-  symfony-api-network:
+  desygner-api-network:
     external: true

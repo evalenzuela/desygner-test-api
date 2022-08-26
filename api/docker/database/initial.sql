@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS desygner.db;
+GRANT ALL PRIVILEGES ON desygner.db.* TO 'root' IDENTIFIED BY 'root';

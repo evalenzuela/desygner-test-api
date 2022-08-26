@@ -5,7 +5,7 @@ services:
   desygner-api-php:
     container_name: desygner-api-php
     build:
-      context: docker/php
+      context: ./docker/php
       args:
         UID: $U_ID
     environment:

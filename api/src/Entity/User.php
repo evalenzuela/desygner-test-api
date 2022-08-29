@@ -7,10 +7,11 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ApiResource]
-class User
+class User implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -73,6 +74,10 @@ class User
 
     public function setEmail(string $email): self
     {
+        if (!\filter_var($email, \FILTER_VALIDATE_EMAIL)) {
+            throw new \LogicException('Invalid email');
+        }
+
         $this->email = $email;
 
         return $this;
@@ -112,5 +117,25 @@ class User
         $this->stocks->removeElement($stock);
 
         return $this;
+    }
+
+    public function getUserIdentifier()
+    {
+    }
+
+    public function getRoles()
+    {
+    }
+
+    public function getSalt()
+    {
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    public function getUsername()
+    {
     }
 }

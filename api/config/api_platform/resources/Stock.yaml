@@ -1,0 +1,17 @@
+App\Entity\Stock:
+  attributes:
+    normalization_context:
+      groups: [user_read]
+  collectionOperations:
+    create:
+      method: POST
+      path: /stocks/create
+      controller: App\Api\Action\Stock\Create
+      denormalization_context:
+        groups: [user_post]
+      openapi_context:
+        summary: Create a new stock
+  itemOperations:
+    get:
+      
+      

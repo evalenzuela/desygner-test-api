@@ -1,0 +1,17 @@
+App\Entity\Tag:
+  attributes:
+    normalization_context:
+      groups: [user_read]
+  collectionOperations:
+    create:
+      method: POST
+      path: /tags/create
+      controller: App\Api\Action\Tag\Create
+      denormalization_context:
+        groups: [user_post]
+      openapi_context:
+        summary: Create a new tag
+  itemOperations:
+    get:
+      
+      

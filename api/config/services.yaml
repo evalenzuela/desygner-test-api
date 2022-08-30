@@ -30,3 +30,6 @@ services:
     App\Api\Listener\JsonExceptionResponseTransformerListener:
         tags:
             - {name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100}
+
+    ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter:
+        tags: ['api_platform.filter']

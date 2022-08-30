@@ -13,5 +13,6 @@ App\Entity\Tag:
         summary: Create a new tag
   itemOperations:
     get:
+      method: GET
       
       

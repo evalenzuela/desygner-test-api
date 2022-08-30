@@ -1,17 +1,38 @@
 App\Entity\Stock:
   attributes:
     normalization_context:
-      groups: [user_read]
+      groups: [stock_read]
+    filters:
+      - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter
   collectionOperations:
+    get:
+      filters: ['api_platform.search_filter']
     create:
       method: POST
       path: /stocks/create
       controller: App\Api\Action\Stock\Create
       denormalization_context:
-        groups: [user_post]
+        groups: [stock_post]
       openapi_context:
         summary: Create a new stock
+    upload:
+      method: POST
+      path: /stocks/{id}/upload
+      controller: App\Api\Action\Stock\Upload
+      deserialize: false
+      openapi_context:
+        summary: Updates the stock image
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  image:
+                    type: string
+                    format: binary
   itemOperations:
     get:
+      method: GET
       
       

@@ -13,5 +13,6 @@ App\Entity\User:
         summary: Create a new user
   itemOperations:
     get:
+      method: GET
       
       
